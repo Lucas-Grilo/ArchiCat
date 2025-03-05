@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArchiCat</title>
+
+  <!-- Definindo o favicon -->
+  <link rel="shortcut icon" href="img/logo2.ico">
+
+  <link rel="stylesheet" href="style2.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+  <div class="top-rectangle">
+    <img src="img/logo1.png" alt="Logo" class="logo-left">
+    <h1 class="top-text">Projete o espaço para seu gato</h1>
+    <img src="img/compras2.png" alt="Carrinho de Compras" class="cart-icon">
+  </div>
+
+  <div class="main-container">
+    <div class="screen-container">
+      <div class="screen" id="screenContainer">
+        <h2 id="text">Carregue uma Imagem</h2>
+        <input type="file" id="inputImage" accept="image/*">
+        <div class="upload-container">
+          <button class="new-upload" id="newUpload">Carregar uma nova imagem</button>
+          <img src="img/lixo.png" alt="Imagem de Lixo" class="fixed-image" id="lixoImage" style="display: none;">
+        </div>
+        <div class="rotate-buttons-container" style="display: none;">
+          <button class="rotate-button left" id="rotateLeftButton">
+            <span>&#8634;</span>
+          </button>
+          <button class="rotate-button right" id="rotateRightButton">
+            <span>&#8635;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-rectangle-container">
+      <div class="vertical-rectangle">
+
+        <img src="img/thumb1.png" class="thumbnail" data-value="78.00" onclick="setImage(this.src, this.getAttribute('data-value'))" alt="Imagem 1">
+
+        <img src="img/thumb2.png" class="thumbnail" data-value="11.70" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 2" width="5" height="5">
+
+        <img src="img/thumb3.png" class="thumbnail" data-value="23.40" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 3" width="120" height="130">
+
+        <img src="img/thumb4.png" class="thumbnail" data-value="31.20" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 4" width="60" height="80">
+
+        <img src="img/thumb5.png" class="thumbnail" data-value="31.20" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 5" width="140" height="170">
+
+        <img src="img/thumb6.png" class="thumbnail" data-value="31.20" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 6" width="140" height="170">
+
+        <img src="img/thumb7.png" class="thumbnail" data-value="35.10" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 7" width="5" height="5">
+
+        <img src="img/thumb8.png" class="thumbnail" data-value="135.00" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 8" width="140" height="170">
+
+        <img src="img/thumb9.png" class="thumbnail" data-value="46,80" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 9" width="140" height="170">
+
+        <img src="img/thumb10.png" class="thumbnail" data-value="0.00" onclick="setImage(this.src, this.getAttribute('data-value'), this.width, this.height)" alt="Imagem 10" width="140" height="170">
+
+      </div>
+    </div>
+
+    <div class="new-rectangle">
+      <div class="square">
+        <h3>Calculo do frete</h3>
+        <input type="text" id="cep" placeholder="Insira seu CEP">
+        <button id="calcular-frete">Calcule seu frete</button>
+        <div id="retangulo-resultado">
+          <p id="resultado-frete"></p>
+        </div>
+      </div>
+
+      <div class="square">
+        <div class="total-sum">
+          <span>Total: R$ <span id="total-sum">0.00</span></span>
+        </div>
+      </div>
+
+      <div class="square">
+        <div class="total-sum">
+          <span>Total Geral: R$ <span id="total-geral" class="total-value">0.00</span></span>
+        </div>
+      </div>
+
+      <button id="baixarImagemButton">Baixar Imagem</button>
+
+      <!-- Novo botão de pagamento -->
+      <button id="finalizarPagamentoButton">Finalizar pagamento</button>
+    </div>
+
+    <canvas id="canvas" style="display: none;"></canvas>
+  </div>
+
+  <script>
+    document.getElementById('finalizarPagamentoButton').addEventListener('click', function () {
+      // Redireciona o usuário para a página de pagamento do Mercado Pago
+      window.location.href = 'https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=1323747282291349-030123-10ab6eaf22df535c7f2dd5605a255fb2-433958110'; // Substitua "ID_DA_PREFERÊNCIA" pelo ID real da preferência de pagamento.
+    });
+  </script>
+
+  <script src="script2.js"></script>
+</body>
+
+</html>

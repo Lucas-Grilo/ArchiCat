@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArchiCat</title>
+
+  <!-- Definindo o favicon -->
+  <link rel="shortcut icon" href="img/logo2.ico">
+
+  <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS -->
+</head>
+
+<body>
+
+  <div class="top-rectangle">
+    <img src="img/logo1.png" alt="Logo" class="logo-left">
+    <h1 class="top-text">Projete o espaço para seu gato</h1>
+    <img src="img/compras2.png" alt="Carrinho de Compras" class="cart-icon">
+  </div>
+
+  <div class="cat-project-button">
+    <!-- Botão para redirecionar -->
+    <button class="cat-project-button" onclick="window.location.href='pagina/pagina2.html'">Click para fazer o projeto do seu gato</button>
+  </div>
+
+  <div class="container">
+    <div class="image-container">
+      <!-- Apenas uma imagem é exibida por vez -->
+      <img id="current-image" src="img/imagem1.png" alt="Imagem 1">
+      <!-- Botões de navegação -->
+      <button class="nav-button left" onclick="prevImage()">&#10094;</button>
+      <button class="nav-button right" onclick="nextImage()">&#10095;</button>
+    </div>
+
+    <script src="script.js"></script> <!-- Link para o arquivo JavaScript -->
+</body>
+
+</html>

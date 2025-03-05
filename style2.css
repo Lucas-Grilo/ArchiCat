@@ -1,0 +1,481 @@
+/* Importação da fonte League Gothic */
+@font-face {
+  font-family: "League Gothic"; /* Nome da fonte */
+  src: url("fonts/Letters for Learners.ttf") format("truetype"); /* Caminho da fonte */
+}
+
+/* Estilo básico do body */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e8d674;
+  padding: 0;
+  justify-content: flex-start;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 10px; /* Remover margens padrão */
+}
+
+/* Estilo do topo (retângulo superior) */
+.top-rectangle {
+  background-color: #ffffff;
+  width: 100%; /* Largura total */
+  height: 200px; /* Altura desejada */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o conteúdo */
+  justify-content: space-between; /* Espaço entre os elementos */
+  padding: 0 20px; /* Padding horizontal para espaçamento interno */
+  position: relative;
+  margin-bottom: 20px; /* Espaçamento inferior */
+  border: 3px solid #000000; /* Temporário para depuração */
+}
+
+/* Estilo para a logo */
+.top-rectangle img {
+  height: 200px; /* Altura da logo */
+}
+
+/* Logo do lado esquerdo */
+.logo-left {
+  margin-right: 40px; /* Espaçamento entre a logo esquerda e o texto */
+}
+
+/* Imagem do carrinho de compras */
+.cart-icon {
+  position: absolute; /* Posicionamento absoluto */
+  right: 100px; /* Distância da borda direita */
+  margin-top: 5px; /* Espaçamento superior */
+  width: 100px; /* Largura da imagem (ajuste conforme necessário) */
+  height: auto; /* Altura automática (mantém a proporção) */
+  cursor: pointer; /* Cursor de clique */
+  z-index: 5; /* Garante que os botões fiquem na frente da imagem */
+  object-fit: contain; /* Mantém a proporção da imagem */
+}
+
+/* Texto no top-rectangle */
+.top-text {
+  font-family: "League Gothic", sans-serif; /* Aplica a fonte personalizada */
+  font-size: 95px; /* Tamanho do texto aumentado */
+  color: #242659; /* Cor do texto */
+  position: absolute; /* Posicionamento absoluto */
+  left: 19%; /* Ajusta a posição horizontal */
+  top: 20%; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajuste fino para centralização */
+}
+
+/* Estilo do container principal (screen e vertical-rectangle) */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px; /* Ajuste conforme necessário */
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #242659;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+/* Estilo do container da tela */
+.screen-container {
+  flex: 1 1 70%;
+  margin-right: 15px; /* Corrigido o valor da margem direita */
+}
+
+/* Estilo da tela de exibição onde a imagem será inserida */
+.screen {
+  width: 100%;
+  max-width: 1000px; /* Reduzi a largura máxima para 600px */
+  max-height: 595px; /* Reduzi a altura máxima para 400px */
+  background-color: white; /* Fundo branco para a tela */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border: 3px solid black;
+  background-image: url("");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Estilo da imagem dentro da .screen */
+.screen img {
+  max-width: 100%; /* Define a largura máxima da imagem */
+  max-height: 100%; /* Define a altura máxima da imagem */
+  width: auto; /* Mantém a proporção da imagem */
+  height: auto; /* Mantém a proporção da imagem */
+  object-fit: contain; /* Faz a imagem se ajustar ao espaço disponível, sem distorcer */
+  background-color: transparent; /* Fundo transparente para imagem */
+  position: absolute; /* Permite o posicionamento absoluto em relação ao contêiner .screen */
+  right: 0; /* Posiciona a imagem à esquerda */
+  bottom: 0; /* Posiciona a imagem no canto inferior */
+  z-index: 10; /* Garante que a imagem fique visível acima de outros elementos */
+}
+
+/* Garantir que as imagens carregadas dinamicamente respeitem width e height */
+.screen .draggable {
+  width: auto !important; /* Respeita o width definido no HTML */
+  height: auto !important; /* Respeita o height definido no HTML */
+  max-width: none !important; /* Remove qualquer limitação de largura máxima */
+  max-height: none !important; /* Remove qualquer limitação de altura máxima */
+  object-fit: contain; /* Mantém a proporção da imagem */
+  position: absolute; /* Permite o posicionamento absoluto */
+  z-index: 10; /* Garante que a imagem fique acima de outros elementos */
+}
+
+/* Estilo do input de imagem */
+.screen input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Estilo do título na tela */
+.screen h2 {
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  z-index: 10; /* Garantir que o título fique acima da imagem */
+}
+
+/* Estilo do container da vertical-rectangle */
+.vertical-rectangle-container {
+  flex: 0 0 170px;
+  min-width: 150px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo da vertical rectangle */
+.vertical-rectangle {
+  width: 180px !important; /* Define a largura */
+  height: 595px !important; /* Define a altura para 600px */
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 4px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Permite o overflow de miniaturas se necessário */
+}
+
+/* Para miniaturas específicas, você pode usar seletores mais específicos */
+
+/* Box 30cm x 30cm */
+.thumbnail:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  margin-top: 25px;
+}
+
+/* Degrau pequeno */
+.thumbnail:nth-child(2) {
+  width: 60px;
+  height: 90px;
+  margin-top: 25px;
+}
+
+/* Degrau grande */
+.thumbnail:nth-child(3) {
+  width: 120px;
+  height: 140px;
+  margin-top: 25px;
+}
+
+/* Ponte */
+.thumbnail:nth-child(4) {
+  width: 150px;
+  height: 70px;
+  margin-top: 25px;
+}
+
+/* Ponte */
+.thumbnail:nth-child(5) {
+  width: 150px;
+  height: 70px;
+  margin-top: 25px;
+}
+
+/* Ponte */
+.thumbnail:nth-child(6) {
+  width: 150px;
+  height: 70px;
+  margin-top: 25px;
+}
+
+/* Arranhador de 46cm */
+.thumbnail:nth-child(7) {
+  width: 30px;
+  height: 120px;
+  margin-top: 25px;
+}
+
+/* Arranhador de 67cm */
+.thumbnail:nth-child(8) {
+  width: 30px;
+  height: 120px;
+  margin-top: 25px;
+}
+
+/* Rede */
+.thumbnail:nth-child(9) {
+  width: 120px;
+  height: 140px;
+  margin-top: 25px;
+}
+
+/* Gato */
+.thumbnail:nth-child(10) {
+  width: 90px;
+  height: 70px;
+  margin-top: 25px;
+}
+
+/* Estilo das miniaturas desativadas */
+.thumbnail.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Estilo para o botão de novo upload */
+.new-upload {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: #242659;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+  font-size: 16px;
+  border: none;
+}
+
+/* Container dos botões de rotação */
+.rotate-buttons-container {
+  display: flex;
+  justify-content: space-between; /* Distribui os botões com espaço entre eles */
+  align-items: center; /* Alinha verticalmente os botões */
+  gap: 10px; /* Espaçamento entre os botões */
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  background-color: #242659;
+  border-radius: 25px;
+  transform: translateX(-50%);
+  width: 140px; /* Largura suficiente para os botões */
+  height: 20px; /* Altura suficiente para os botões */
+  padding: 10px; /* Padding interno para garantir espaço */
+}
+
+/* Ajuste para os botões de rotação */
+.rotate-button {
+  width: 50px; /* Largura fixa para os botões */
+  height: 50px; /* Altura fixa para os botões */
+  border: none;
+  background-color: transparent; /* Remove fundo */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ajuste nas imagens dentro dos botões */
+.rotate-button span {
+  display: inline-block; /* Necessário para o transform funcionar corretamente */
+  font-size: 30px; /* Ajuste o tamanho do ícone */
+}
+
+/* Ícone de rotação esquerda (gira -90 graus) */
+.rotate-button.left span {
+  transform: rotate(-90deg); /* Gira 90 graus no sentido anti-horário */
+  color: #f9f9f9;
+}
+
+/* Ícone de rotação direita (gira 90 graus) */
+.rotate-button.right span {
+  transform: rotate(90deg); /* Gira 90 graus no sentido horário */
+  color: #f9f9f9;
+}
+
+/* Efeito ao pressionar o botão */
+.rotate-button:active {
+  box-shadow: 0 0 12px rgb(247, 243, 4);
+}
+
+/* Estilo do novo retângulo ao lado do retângulo vertical */
+.new-rectangle {
+  width: 30%; /* Largura do novo retângulo */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre os quadrados */
+}
+
+/* Estilo dos quadrados dentro do novo retângulo */
+.square {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Espaçamento entre os quadrados */
+}
+
+#cep {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#calcular-frete {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Espaçamento abaixo do botão */
+}
+
+#calcular-frete:hover {
+  background-color: #0056b3;
+}
+
+#retangulo-resultado {
+  background-color: #f9f9f9; /* Cor de fundo do retângulo */
+  border: 1px solid #ccc; /* Borda do retângulo */
+  border-radius: 4px; /* Cantos arredondados */
+  padding: 10px; /* Espaçamento interno */
+  margin-top: 10px; /* Espaçamento acima do retângulo */
+  min-height: 50px; /* Altura mínima do retângulo */
+  display: flex;
+  align-items: center; /* Centraliza o texto verticalmente */
+  justify-content: center; /* Centraliza o texto horizontalmente */
+  z-index: 9999; /* Garante que o retângulo fique em cima de tudo */
+  position: relative; /* Permite o uso de z-index */
+}
+
+#resultado-frete {
+  font-weight: bold;
+  color: red; /* Cor do texto em vermelho */
+  margin: 0; /* Remove margens padrão do parágrafo */
+}
+
+/* Estilo para o quadrado de soma total */
+.total-sum {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ff9500; /* Cor do texto */
+}
+
+#baixarImagemButton {
+  margin-top: -5%;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#baixarImagemButton:hover {
+  background-color: #45a049;
+}
+
+#finalizarComraButton {
+  margin-top: 1px;
+  padding: 10px 20px;
+  background-color: #ffd000;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#finalizarComraButton:hover {
+  background-color: #45a049;
+}
+
+/* Media Queries */
+
+/* Para dispositivos móveis */
+@media (max-width: 600px) {
+  .vertical-rectangle {
+    width: 100%; /* Largura ajustada para 100% em telas pequenas */
+    min-height: 300px;
+    margin-top: 20px;
+  }
+
+  .screen {
+    height: 300px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+  }
+
+  .top-rectangle {
+    height: 200px; /* Ajuste a altura para dispositivos móveis */
+  }
+}
+
+/* Para tablets e dispositivos de médio porte */
+@media (max-width: 1200px) and (min-width: 601px) {
+  .vertical-rectangle {
+    width: 100%; /* Aqui também é 100% em telas médias */
+    max-width: 160px;
+    min-height: 400px;
+  }
+
+  .screen {
+    height: 400px; /* Ajuste a altura para tablets */
+    margin-right: 15px;
+    width: 100%;
+    max-width: 70%;
+  }
+
+  .thumbnail {
+    width: 70px;
+    height: 70px;
+  }
+
+  .top-rectangle {
+    height: 300px; /* Ajuste a altura para tablets */
+  }
+}
+
+/* Para desktops e notebooks grandes */
+@media (min-width: 1025px) {
+  .vertical-rectangle {
+    width: 180px; /* Largura fixa para desktops */
+  }
+
+  .screen {
+    height: 600px; /* Mantive a altura reduzida para desktops */
+  }
+
+  .top-rectangle {
+    height: 200px; /* Ajuste a altura para desktops */
+  }
+}
